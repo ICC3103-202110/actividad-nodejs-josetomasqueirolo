@@ -6,14 +6,13 @@ function fibonacci(x) {
     return fibonacci(x-1)+fibonacci(x-2);
 }
 
-console.log("Escriba el número para la suceción:");
-var stdin = process.openStdin();
+const readline = require('readline').createInterface({
+    input: process.stdin,
+    output: process.stdout
+  })
+  
+  readline.question(`Ingresa un número: `, number => {
+    console.log(`F(${number}) = ${fibonacci(number)}`)
+    readline.close()
+  })
 
-
-stdin.addListener("data", function(d) {
-    console.log("F(" + d.toString().trim() +")");
-});
-
-
-
-console.log(fibonacci(8))
